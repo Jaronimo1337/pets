@@ -1,0 +1,33 @@
+@import "tailwindcss";
+body {
+    @apply bg-gray-900 
+  }
+.main--container{
+    @apply bg-gray-900 h-svh
+}
+.secondary--container{
+    @apply mx-60 
+}
+.h1--header{
+    @apply text-white text-5xl pt-2
+}
+.main--header{
+    @apply flex justify-between pb-1
+}
+.list--item{
+    @apply text-white flex space-x-20
+}
+.item--fullname{
+
+}
+.status-paid {
+    @apply bg-green-500/25 text-green-300;
+  }
+  
+  .status-pending {
+    @apply bg-amber-500/25 text-amber-200
+  }
+  
+  .status-draft {
+    @apply bg-white/25 text-white
+  }
