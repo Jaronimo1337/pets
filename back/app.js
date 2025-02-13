@@ -1,5 +1,5 @@
 const express = require('express');
-const invoiceRouter = require('./routes/invoiceRoute');
+const petsRouter = require('./routes/petsRoute');
 const userRouter = require('./routes/userRoutes');
 const app = express();
 const cors = require('cors');
@@ -15,7 +15,7 @@ app.use(cors({
     methods: ['GET', 'POST', 'PUT', 'DELETE'],
     allowedHeaders: ['Content-Type', 'Authorization'],
   }));
-app.use('/api/v1/invoice', invoiceRouter);
+app.use('/api/v1/pets', petsRouter);
 app.use('/api/v1/users', userRouter);
 
 app.all('*', (req, res, next) => {

@@ -3,7 +3,7 @@ import './App.css';
 import './index.css';
 import RegisterForm from './components/Register';
 import LoginForm from './components/Login';
-import Invoice from './Invoice';
+import Pets from './Pets';
 
 function App() {
   return (
@@ -11,7 +11,7 @@ function App() {
       <Routes>
         <Route path="/" element={<RegisterForm />} />
         <Route path="/login" element={<LoginForm />} />
-        <Route path="/invoice" element={<Invoice />} />
+        <Route path="/pets" element={<Pets />} />
       </Routes>
     </BrowserRouter>
   );

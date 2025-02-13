@@ -1,6 +1,6 @@
 @import "tailwindcss";
 body {
-    @apply bg-gray-900 
+    @apply bg-white
   }
 .main--container{
     @apply bg-gray-900 h-svh

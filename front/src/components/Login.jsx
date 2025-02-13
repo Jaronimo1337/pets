@@ -26,7 +26,7 @@ function LoginForm() {
         );
         setUser(response.data);
         console.log(response.data)
-        navigate("/invoice");
+        navigate("/pets");
 
       } catch (error) {
         if(axios.isAxiosError(error)){  // axios.isAxiosError(error) is a built-in method in Axios that checks whether the error object comes from an Axios request.
