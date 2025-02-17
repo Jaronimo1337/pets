@@ -12,17 +12,6 @@ exports.createPet = async (req, res, next) => {
   }
 }
 
-exports.getAllPets = async (req, res, next) => {
-    try {
-      const pets = await getAllPets();
-      res.status(200).json({
-        status: "success",
-        data: pets,
-      }); 
-    } catch (error) {
-      next(error)
-    }
-}
 
 exports.getPetById = async (req, res, next) => {
     try {
@@ -50,15 +39,47 @@ exports.deletePet = async (req, res, next) => {
       next(error)
     }
 }
-exports.getFilteredPets = async (req, res, next) => {
+exports.getAllPets = async (req, res, next) => {
   try {
-    const filter = req.query;
-    const pets = await getFilteredPets(filter);
+    const { page, limit, search, owner } = req.query;
+    const { pets, total } = await getAllPets({
+      page: parseInt(page) || 1,
+      limit: parseInt(limit) || 10,
+      search: search || '',
+      owner
+    });
+
     res.status(200).json({
-      status: "success",
-      data: pets
+      status: 'success',
+      total,
+      page: parseInt(page) || 1,
+      limit: parseInt(limit) || 10,
+      data: pets,
     });
   } catch (error) {
-    next(error)
+    next(error);
+  }
+};
+
+exports.getFilteredPets = async (req, res, next) => {
+  try {
+    const { page = 1, limit = 10, search = '', owner, sort = 'date', order = 'desc' } = req.query;
+
+    const filter = {
+      name: `%${search}%`,
+      owner: `%${owner || ''}%`,
+      sort,
+      order
+    };
+
+    const { pets, total } = await getFilteredPets(filter);  
+
+    res.status(200).json({
+      status: 'success',
+      total: Number(total),
+      data: pets,
+    });
+  } catch (error) {
+    next(error);  
   }
 };
